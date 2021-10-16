@@ -20,7 +20,7 @@ public class RunManager{
                         new FirstTask().run(input);
                     }
                     case "2": {
-                        new SecondTask().run();
+                        new SecondTask().run(input);
                     }
                     case "0": {
                         System.exit(0);
