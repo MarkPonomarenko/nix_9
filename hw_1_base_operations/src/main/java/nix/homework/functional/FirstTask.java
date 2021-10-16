@@ -8,7 +8,8 @@ import java.io.IOException;
 public class FirstTask{
 
     public static void run(BufferedReader input) throws IOException{
-        System.out.println("Fist Task executed");
+        System.out.println("Выбрано первое задание");
+        System.out.println("Введите строку:");
         String text = input.readLine();
         int sum = 0;
         String temp = "0";
@@ -23,7 +24,9 @@ public class FirstTask{
             }
         }
         sum += Integer.parseInt(temp);
-        System.out.println("Sum = " + sum);
+        System.out.println("Сумма чисел = " + sum);
+        System.out.println("Нажмите Enter для продолжения...");
+        System.in.read();
         new RunManager().run();
     }
 }

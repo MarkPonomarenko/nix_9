@@ -1,5 +1,7 @@
 package nix.homework.functional;
 
+import nix.homework.RunManager;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
@@ -19,7 +21,8 @@ public class SecondTask{
     }
 
     public static void run(BufferedReader input) throws IOException{
-        System.out.println("Second Task executed");
+        System.out.println("Выбрано второе задание!");
+        System.out.println("Введите строку:");
         String text = input.readLine();
 
         Map<Character, Integer> charCounterMap = new HashMap<Character, Integer>();
@@ -53,5 +56,8 @@ public class SecondTask{
             i++;
             System.out.println(i + ". " + s);
         }
+        System.out.println("Нажмите Enter для продолжения...");
+        System.in.read();
+        new RunManager().run();
     }
 }
