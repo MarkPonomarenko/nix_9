@@ -51,7 +51,7 @@ public class StringReverse {
             int firstIndex = text.indexOf(firstChar, index);
             int lastIndex = text.indexOf(lastChar, firstIndex);
             String result = text;
-            if (lastIndex != -1) {
+            if (lastIndex != -1 && firstIndex != -1) {
                 result = reverse(text, firstIndex, lastIndex);
                 if ((lastIndex - firstIndex) <= (text.length() - lastIndex - 1)) {
                     result = reverse(result, firstChar, lastChar, lastIndex + 1);
@@ -64,7 +64,7 @@ public class StringReverse {
         int firstIndex = text.indexOf(firstChar);
         int lastIndex = text.indexOf(lastChar, firstIndex);
         String result = text;
-        if (lastIndex != -1) {
+        if (lastIndex != -1 && firstIndex != -1) {
             result = reverse(text, firstIndex, lastIndex);
             if ((lastIndex - firstIndex) <= (text.length() - lastIndex - 1)) {
                 result = reverse(result, firstChar, lastChar, lastIndex + 1);
@@ -76,6 +76,7 @@ public class StringReverse {
     public static String reverse(String text, String first, String last, int index) {
         int firstIndex = text.indexOf(first, index);
         int lastIndex = text.indexOf(last, firstIndex) + last.length() - 1;
+        if (firstIndex == -1 || lastIndex == -1) return text;
         String result = reverse(text, firstIndex, lastIndex);
         if ((lastIndex - firstIndex) <= (text.length() - lastIndex - 1)) {
             result = reverse(result, first, last, lastIndex + 1);
@@ -85,6 +86,7 @@ public class StringReverse {
     public static String reverse(String text, String first, String last) {
         int firstIndex = text.indexOf(first);
         int lastIndex = text.indexOf(last, firstIndex) + last.length() - 1;
+        if (firstIndex == -1 || lastIndex == -1) return text;
         String result = reverse(text, firstIndex, lastIndex);
         if ((lastIndex - firstIndex) <= (text.length() - lastIndex - 1)) {
             result = reverse(result, first, last, lastIndex + 1);
