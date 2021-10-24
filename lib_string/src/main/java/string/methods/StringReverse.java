@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class StringReverse {
 
     public static String reverse(String text, Boolean choice) {
-        if (choice == false) {
+        if (!choice) {
             StringBuilder result = new StringBuilder();
             String[] words = text.split(" |\\!|\\.|\\,|\\?");
 

@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 
 public class RunManager{
 
-    public static void run(){
+    public static void run() {
         instruction();
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String statement;
@@ -39,7 +39,8 @@ public class RunManager{
             e.printStackTrace();
         }
     }
-    static void instruction(){
+
+    static void instruction() {
         System.out.println("\t Главное меню");
         System.out.println("Введите номер задания для его выполнения.");
         System.out.println("Введите 0 для выхода из программы.");
