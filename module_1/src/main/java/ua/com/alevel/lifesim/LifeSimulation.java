@@ -22,7 +22,7 @@ public class LifeSimulation {
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                int lives = liveNeighbors(board, m, n, i, j);
+                int lives = getNeighbors(board, m, n, i, j);
 
                 if (board[i][j] == 1 && lives >= 2 && lives <= 3) {
                     board[i][j] = 3;
@@ -40,7 +40,7 @@ public class LifeSimulation {
         }
     }
 
-    public static int liveNeighbors(int[][] board, int m, int n, int i, int j) {
+    public static int getNeighbors(int[][] board, int m, int n, int i, int j) {
         int lives = 0;
         for (int x = Math.max(i - 1, 0); x <= Math.min(i + 1, m - 1); x++) {
             for (int y = Math.max(j - 1, 0); y <= Math.min(j + 1, n - 1); y++) {
