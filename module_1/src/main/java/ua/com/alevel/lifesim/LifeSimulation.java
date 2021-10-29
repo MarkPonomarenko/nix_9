@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class LifeSimulation {
     public static void printBoard(int[][] board) {
-        System.out.println("  1 2 3 4 5");
+        System.out.println("  1 2 3 4 5 6 7 8");
         int j = 0;
         for(int i = 0; i < board.length; i++) {
             System.out.println((i + 1) + " " + board[i][j++] + " " + board[i][j++] + " " +
