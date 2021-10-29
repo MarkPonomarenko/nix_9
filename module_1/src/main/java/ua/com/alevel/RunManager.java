@@ -38,7 +38,7 @@ public class RunManager {
         }
     }
     public static void printSecondMenu(){
-        System.out.println("\tПервый уровень");
+        System.out.println("\tВторой уровень");
         System.out.println("1 - Балансированые скобки");
         System.out.println("2 - Глубина бинарного дерева");
         System.out.println("0 - Выход в главное меню");
