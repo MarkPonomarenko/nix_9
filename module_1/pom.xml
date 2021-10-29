@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hw_2_strings</artifactId>
+    <artifactId>module_1</artifactId>
     <packaging>jar</packaging>
 
     <properties>
@@ -19,14 +19,6 @@
         <maven.compiler.target>17</maven.compiler.target>
 
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>nix_9</groupId>
-            <artifactId>lib_string</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
     <build>
         <finalName>maven</finalName>
@@ -49,7 +41,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ua.com.alevel.ua.com.alevel.Main</mainClass>
+                            <mainClass>ua.com.alevel.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -67,7 +59,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>ua.com.alevel.ua.com.alevel.Main</mainClass>
+                                    <mainClass>ua.com.alevel.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
