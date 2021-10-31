@@ -7,27 +7,35 @@ import java.io.InputStreamReader;
 public class HorseMove {
 
     public static void printBoard(int[][] board) {
-        System.out.println("  1 2 3 4 5 6 7 8");
-        int j = 0;
-        for(int i = 0; i < 8; i++) {
-            System.out.println((i + 1) + " " + board[i][j++] + " " + board[i][j++] + " " +
-                    board[i][j++] + " " + board[i][j++] + " " + board[i][j++] + " " +
-                    board[i][j++] + " " + board[i][j++] + " " + board[i][j]);
-            j = 0;
+        System.out.print("  ");
+        for (int i = 0; i < board.length; i++) {
+            System.out.print(" " + i);
+        }
+        System.out.print("\n");
+        for(int i = 0; i < board.length; i++) {
+            System.out.print(i + ". ");
+            for (int j = 0; j < board[i].length; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.print("\n");
         }
     }
     public static void printBoard(int[][] board, int x, int y) {
-        System.out.println("  1 2 3 4 5 6 7 8");
-        int j = 0;
-        int tmp = board[x][y];
-        board[x- 1][y - 1] = 1;
-        for(int i = 0; i < 8; i++) {
-            System.out.println((i + 1) + " " + board[i][j++] + " " + board[i][j++] + " " +
-                    board[i][j++] + " " + board[i][j++] + " " + board[i][j++] + " " +
-                    board[i][j++] + " " + board[i][j++] + " " + board[i][j]);
-            j = 0;
+        System.out.print("  ");
+        for (int i = 0; i < board.length; i++) {
+            System.out.print(" " + i);
         }
-        board[x - 1][y - 1] = tmp;
+        int tmp = board[x][y];
+        board[x][y] = 1;
+        System.out.print("\n");
+        for(int i = 0; i < board.length; i++) {
+            System.out.print(i + ". ");
+            for (int j = 0; j < board[i].length; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.print("\n");
+        }
+        board[x][y] = tmp;
     }
     public static int[] safeInput() throws IOException{
         while (true) {

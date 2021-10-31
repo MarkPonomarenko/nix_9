@@ -1,18 +1,26 @@
 package ua.com.alevel.lifesim;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LifeSimulation {
     public static void printBoard(int[][] board) {
-        System.out.println("  1 2 3 4 5 6 7 8");
-        int j = 0;
+        System.out.print("  ");
+        for(int i = 0; i < board[0].length; i++) {
+            System.out.print(" " + i);
+        }
+        System.out.print("\n");
         for(int i = 0; i < board.length; i++) {
-            System.out.println((i + 1) + " " + board[i][j++] + " " + board[i][j++] + " " +
-                    board[i][j++] + " " + board[i][j++] + " " + board[i][j++]+ " "
-                    + board[i][j++]+ " " + board[i][j++]+ " " + board[i][j++]);
-            j = 0;
+            System.out.print(i + ". ");
+            for (int j = 0; j < board[i].length; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.print("\n");
         }
         System.out.println("----------------------------------------------");
     }
@@ -62,14 +70,32 @@ public class LifeSimulation {
             System.out.println("Неверные данные, введите ещё раз");
         }
     }
+    public static int[] safeInput() throws IOException{
+        while (true) {
+            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+            String sizeRaw = input.readLine();
+            String[] sizeSplit = sizeRaw.split(" ");
+            int[] sizeFin = new int[sizeSplit.length];
+            if (sizeSplit.length < 3 && sizeSplit.length != 1) {
+                sizeFin[0] = Integer.parseInt(sizeSplit[0]);
+                sizeFin[1] = Integer.parseInt(sizeSplit[1]);
+                if (sizeFin[0] > 0 && sizeFin[1] > 0 ) {
+                    return sizeFin;
+                }
+            }
+        }
+    }
     public static void run() throws IOException {
         System.out.println("\tИгра <Жизнь>");
         System.out.println("Начальная доска:");
-        int[][] board = {{0,0,0,0,0,0,0,0},
-                         {1,1,1,1,1,0,0,0},
-                         {1,1,0,0,0,0,0,0},
-                         {0,0,0,0,0,0,0,0},
-                         {0,0,0,0,0,0,0,0}};
+        System.out.println("Введите размерность (например 3 3)");
+        int[] size = safeInput();
+        int[][] board = new int[size[0]][size[1]];
+        for(int i = 0; i < board.length; i++) {
+            for(int j = 0; j < board[0].length; j++) {
+                board[i][j] = ThreadLocalRandom.current().nextInt(0, 1 + 1);
+            }
+        }
         printBoard(board);
         System.out.println("Продолжить/закончить (1/0)");
         if (!safeChoice()) {
