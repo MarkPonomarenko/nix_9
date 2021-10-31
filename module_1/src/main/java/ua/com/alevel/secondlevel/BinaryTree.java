@@ -1,5 +1,8 @@
 package ua.com.alevel.secondlevel;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -69,19 +72,66 @@ public class BinaryTree {
         }
 
     }
-    public static void findMaxHeight() {
+    private TreeNode addRecursive(TreeNode current, int value) {
+        if (current == null) {
+            return new TreeNode(value);
+        }
+
+        if (value < current.val) {
+            current.left = addRecursive(current.left, value);
+        } else if (value > current.val) {
+            current.right = addRecursive(current.right, value);
+        } else {
+            // value already exists
+            return current;
+        }
+
+        return current;
+    }
+    public void add(int value) {
+        root = addRecursive(root, value);
+    }
+    public static void printMenu(){
+        System.out.println("1 - Добавить элемент");
+        System.out.println("2 - Вывод дерева");
+        System.out.println("3 - Найти макс высоту");
+        System.out.println("0 - Выход");
+        System.out.println("Ваш ввод:");
+    }
+    public static int safeInput() throws IOException {
+        while (true) {
+            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+            String inputRaw = input.readLine();
+            String[] inputSplit = inputRaw.split(" ");
+            if(inputSplit.length > 1) continue;
+            int x = Integer.parseInt(inputSplit[0]);
+            return x;
+        }
+    }
+    public static void findMaxHeight() throws IOException {
+        Scanner scanner = new Scanner(System.in);
         BinaryTree tree = new BinaryTree();
         tree.root = new TreeNode(1);
-        tree.root.left = new TreeNode(2);
-        tree.root.right = new TreeNode(3);
-        tree.root.left.left = new TreeNode(4);
-        tree.root.left.right = new TreeNode(5);
-        tree.root.left.right.left = new TreeNode(6);
-        System.out.println("Бинарное дерево:");
-        new BinaryTreePrinter(tree.root).print(System.out);
-
-        System.out.println("Высота дерева: " + tree.maxDepth(tree.root));
-        System.out.println("Нажмите Enter для продолжения...");
-        new Scanner(System.in).nextLine();
+        while(true) {
+            printMenu();
+            String statement = scanner.nextLine();
+            switch(statement) {
+                case "1":
+                    System.out.println("Введите значение нового эл.:");
+                    int x = safeInput();
+                    tree.add(x);
+                    break;
+                case "2":
+                    new BinaryTreePrinter(tree.root).print(System.out);
+                    break;
+                case "3":
+                    System.out.println("Высота дерева: " + tree.maxDepth(tree.root));
+                    break;
+                case "0":
+                    return;
+                default:
+                    System.out.println("Неверный ввод");
+            }
+        }
     }
 }
