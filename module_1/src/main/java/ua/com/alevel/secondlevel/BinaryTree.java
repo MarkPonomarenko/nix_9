@@ -92,11 +92,23 @@ public class BinaryTree {
         root = addRecursive(root, value);
     }
     public static void printMenu(){
+        System.out.println("\tБинарное дерево");
         System.out.println("1 - Добавить элемент");
         System.out.println("2 - Вывод дерева");
         System.out.println("3 - Найти макс высоту");
         System.out.println("0 - Выход");
         System.out.println("Ваш ввод:");
+    }
+    public static boolean inputCheck(String[] input){
+        for (String s : input) {
+            for (int j = 0; j < s.length(); ++j) {
+                if (!Character.isDigit(s.charAt(j))) {
+                    System.out.println("Неверный ввод");
+                    return false;
+                }
+            }
+        }
+        return true;
     }
     public static int safeInput() throws IOException {
         while (true) {
@@ -104,6 +116,7 @@ public class BinaryTree {
             String inputRaw = input.readLine();
             String[] inputSplit = inputRaw.split(" ");
             if(inputSplit.length > 1) continue;
+            if(!inputCheck(inputSplit)) continue;
             int x = Integer.parseInt(inputSplit[0]);
             return x;
         }
@@ -111,15 +124,17 @@ public class BinaryTree {
     public static void findMaxHeight() throws IOException {
         Scanner scanner = new Scanner(System.in);
         BinaryTree tree = new BinaryTree();
-        tree.root = new TreeNode(1);
+        System.out.println("Введите значение корневого узла:");
+        int x = safeInput();
+        tree.add(x);
         while(true) {
             printMenu();
             String statement = scanner.nextLine();
             switch(statement) {
                 case "1":
                     System.out.println("Введите значение нового эл.:");
-                    int x = safeInput();
-                    tree.add(x);
+                    int y = safeInput();
+                    tree.add(y);
                     break;
                 case "2":
                     new BinaryTreePrinter(tree.root).print(System.out);
