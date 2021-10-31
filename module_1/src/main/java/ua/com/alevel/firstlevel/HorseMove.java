@@ -12,7 +12,7 @@ public class HorseMove {
             System.out.print(" " + i);
         }
         System.out.print("\n");
-        for(int i = 0; i < board.length; i++) {
+        for (int i = 0; i < board.length; i++) {
             System.out.print(i + ". ");
             for (int j = 0; j < board[i].length; j++) {
                 System.out.print(board[i][j] + " ");
@@ -20,6 +20,7 @@ public class HorseMove {
             System.out.print("\n");
         }
     }
+
     public static void printBoard(int[][] board, int x, int y) {
         System.out.print("  ");
         for (int i = 0; i < board.length; i++) {
@@ -28,7 +29,7 @@ public class HorseMove {
         int tmp = board[x][y];
         board[x][y] = 1;
         System.out.print("\n");
-        for(int i = 0; i < board.length; i++) {
+        for (int i = 0; i < board.length; i++) {
             System.out.print(i + ". ");
             for (int j = 0; j < board[i].length; j++) {
                 System.out.print(board[i][j] + " ");
@@ -37,7 +38,8 @@ public class HorseMove {
         }
         board[x][y] = tmp;
     }
-    public static int[] safeInput() throws IOException{
+
+    public static int[] safeInput() throws IOException {
         while (true) {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             String position = input.readLine();
@@ -56,20 +58,22 @@ public class HorseMove {
             }
         }
     }
+
     public static boolean validMove(int[] start, int[] destination) {
         int deltaFirst = destination[0] - start[0];
         int deltaSecond = destination[1] - start[1];
-        return 5 == deltaFirst*deltaFirst + deltaSecond*deltaSecond;
+        return 5 == deltaFirst * deltaFirst + deltaSecond * deltaSecond;
     }
+
     public static void run() throws IOException {
-        int[][] board = {{0,0,0,0,0,0,0,0},
-                         {0,0,0,0,0,0,0,0},
-                         {0,0,0,0,0,0,0,0},
-                         {0,0,0,0,0,0,0,0},
-                         {0,0,0,0,0,0,0,0},
-                         {0,0,0,0,0,0,0,0},
-                         {0,0,0,0,0,0,0,0},
-                         {0,0,0,0,0,0,0,0}};
+        int[][] board = {{0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0}};
         printBoard(board);
         System.out.println("Введите начальную позицию:");
         int[] pos = safeInput();

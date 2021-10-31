@@ -8,7 +8,8 @@ import java.util.Scanner;
 
 
 public class UniqueCounter {
-    public static boolean inputCheck(String[] input){
+
+    public static boolean inputCheck(String[] input) {
         for (String s : input) {
             for (int j = 0; j < s.length(); ++j) {
                 if (!Character.isDigit(s.charAt(j))) {
@@ -18,6 +19,7 @@ public class UniqueCounter {
         }
         return true;
     }
+
     public static void run() throws IOException {
         System.out.println("Введите числа черз пробел:");
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));

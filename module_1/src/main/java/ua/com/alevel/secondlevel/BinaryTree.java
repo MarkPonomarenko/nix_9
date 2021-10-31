@@ -72,6 +72,7 @@ public class BinaryTree {
         }
 
     }
+
     private TreeNode addRecursive(TreeNode current, int value) {
         if (current == null) {
             return new TreeNode(value);
@@ -88,9 +89,11 @@ public class BinaryTree {
 
         return current;
     }
+
     public void add(int value) {
         root = addRecursive(root, value);
     }
+
     public static void printMenu(){
         System.out.println("\tБинарное дерево");
         System.out.println("1 - Добавить элемент");
@@ -99,7 +102,8 @@ public class BinaryTree {
         System.out.println("0 - Выход");
         System.out.println("Ваш ввод:");
     }
-    public static boolean inputCheck(String[] input){
+
+    public static boolean inputCheck(String[] input) {
         for (String s : input) {
             for (int j = 0; j < s.length(); ++j) {
                 if (!Character.isDigit(s.charAt(j))) {
@@ -110,6 +114,7 @@ public class BinaryTree {
         }
         return true;
     }
+
     public static int safeInput() throws IOException {
         while (true) {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -121,6 +126,7 @@ public class BinaryTree {
             return x;
         }
     }
+
     public static void findMaxHeight() throws IOException {
         Scanner scanner = new Scanner(System.in);
         BinaryTree tree = new BinaryTree();

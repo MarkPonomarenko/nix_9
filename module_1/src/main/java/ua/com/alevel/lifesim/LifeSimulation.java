@@ -4,18 +4,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class LifeSimulation {
     public static void printBoard(int[][] board) {
         System.out.print("  ");
-        for(int i = 0; i < board[0].length; i++) {
+        for (int i = 0; i < board[0].length; i++) {
             System.out.print(" " + i);
         }
         System.out.print("\n");
-        for(int i = 0; i < board.length; i++) {
+        for (int i = 0; i < board.length; i++) {
             System.out.print(i + ". ");
             for (int j = 0; j < board[i].length; j++) {
                 System.out.print(board[i][j] + " ");
@@ -24,6 +23,7 @@ public class LifeSimulation {
         }
         System.out.println("----------------------------------------------");
     }
+
     public static void gameOfLife(int[][] board) {
         if (board == null || board.length == 0) return;
         int m = board.length, n = board[0].length;
@@ -58,10 +58,11 @@ public class LifeSimulation {
         lives -= board[i][j] & 1;
         return lives;
     }
-    public static boolean safeChoice(){
+
+    public static boolean safeChoice() {
         Scanner input = new Scanner(System.in);
         String choice;
-        while(true){
+        while (true) {
             choice = input.nextLine();
             if (!Objects.equals(choice, "")) {
                 if (Integer.parseInt(choice) == 1) return true;
@@ -70,7 +71,8 @@ public class LifeSimulation {
             System.out.println("Неверные данные, введите ещё раз");
         }
     }
-    public static int[] safeInput() throws IOException{
+
+    public static int[] safeInput() throws IOException {
         while (true) {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             String sizeRaw = input.readLine();
@@ -79,20 +81,21 @@ public class LifeSimulation {
             if (sizeSplit.length < 3 && sizeSplit.length != 1) {
                 sizeFin[0] = Integer.parseInt(sizeSplit[0]);
                 sizeFin[1] = Integer.parseInt(sizeSplit[1]);
-                if (sizeFin[0] > 0 && sizeFin[1] > 0 ) {
+                if (sizeFin[0] > 0 && sizeFin[1] > 0) {
                     return sizeFin;
                 }
             }
         }
     }
+
     public static void run() throws IOException {
         System.out.println("\tИгра <Жизнь>");
         System.out.println("Начальная доска:");
         System.out.println("Введите размерность (например 3 3)");
         int[] size = safeInput();
         int[][] board = new int[size[0]][size[1]];
-        for(int i = 0; i < board.length; i++) {
-            for(int j = 0; j < board[0].length; j++) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
                 board[i][j] = ThreadLocalRandom.current().nextInt(0, 1 + 1);
             }
         }

@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 
 public class RunManager {
 
-    public static void run(){
+    public static void run() {
         printMenu();
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String statement;
@@ -37,19 +37,22 @@ public class RunManager {
             e.printStackTrace();
         }
     }
-    public static void printSecondMenu(){
+
+    public static void printSecondMenu() {
         System.out.println("\tВторой уровень");
         System.out.println("1 - Балансированые скобки");
         System.out.println("2 - Глубина бинарного дерева");
         System.out.println("0 - Выход в главное меню");
     }
-    public static void printFirstMenu(){
+
+    public static void printFirstMenu() {
         System.out.println("\tПервый уровень");
         System.out.println("1 - Кол-во уникальных чисел");
         System.out.println("2 - Ход коня");
         System.out.println("3 - Площадь треугольника");
         System.out.println("0 - Выход в главное меню");
     }
+
     public static void printFirstLevel(BufferedReader input) throws IOException {
         printFirstMenu();
         String statement;
@@ -79,6 +82,7 @@ public class RunManager {
             e.printStackTrace();
         }
     }
+
     public static void printSecondLevel(BufferedReader input) throws IOException {
         printSecondMenu();
         String statement;
@@ -104,6 +108,7 @@ public class RunManager {
             e.printStackTrace();
         }
     }
+
     public static void printMenu() {
         System.out.println("\tГлавное меню");
         System.out.println("Выберите уровень сложности(1,2)");

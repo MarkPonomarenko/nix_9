@@ -12,22 +12,22 @@ public class BalancedBrackets {
         Deque<Character> brackets = new ArrayDeque<Character>();
         for (int i = 0; i < string.length(); ++i) {
             char x = string.charAt(i);
-            if(x == '(' || x == '[' || x == '{'){
+            if (x == '(' || x == '[' || x == '{') {
                 brackets.push(x);
                 continue;
             }
             if (brackets.isEmpty())
                 return false;
             char check;
-            switch(x) {
+            switch (x) {
                 case ')':
                     check = brackets.pop();
-                    if(check == '{' || check == '[')
+                    if (check == '{' || check == '[')
                         return false;
                     break;
                 case '}':
                     check = brackets.pop();
-                    if(check == '(' || check == '[')
+                    if (check == '(' || check == '[')
                         return false;
                     break;
                 case ']':
@@ -39,14 +39,14 @@ public class BalancedBrackets {
         }
         return (brackets.isEmpty());
     }
+
     public static void run() throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String inputLine = input.readLine();
 
-        if(isBalancedLine(inputLine)){
+        if (isBalancedLine(inputLine)) {
             System.out.println("Строка допустима");
-        }
-        else {
+        } else {
             System.out.println("Строка недопустима");
         }
         System.out.println("Нажмите Enter для продолжения...");
