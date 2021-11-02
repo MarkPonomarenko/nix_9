@@ -7,30 +7,39 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 //класс ячеек дерева
-class TreeNode{
+class TreeNode {
+
     int val;
     TreeNode left;
     TreeNode right;
+
     TreeNode(int x) {
         val = x;
         left = right = null;
-    };
-    public int getVal(){
+    }
+
+    public int getVal() {
         return val;
     }
-    public TreeNode getRight(){
+
+    public TreeNode getRight() {
         return right;
     }
-    public TreeNode getLeft(){
+
+    public TreeNode getLeft() {
         return left;
     }
 }
+
 //красивый более менее вывод дерева
-class BinaryTreePrinter{
+class BinaryTreePrinter {
+
     TreeNode root;
+
     BinaryTreePrinter(TreeNode node) {
         root = node;
     }
+
     public void traversePreOrder(StringBuilder sb, String padding, String pointer, TreeNode node) {
         if (node != null) {
             sb.append(padding);
@@ -49,6 +58,7 @@ class BinaryTreePrinter{
             traversePreOrder(sb, paddingForBoth, pointerForRight, node.getRight());
         }
     }
+
     public void print(PrintStream os) {
         StringBuilder sb = new StringBuilder();
         traversePreOrder(sb, "", "", this.root);
@@ -57,6 +67,7 @@ class BinaryTreePrinter{
 }
 
 public class BinaryTree {
+
     TreeNode root;
 
     int maxDepth(TreeNode node) {
@@ -94,7 +105,7 @@ public class BinaryTree {
         root = addRecursive(root, value);
     }
 
-    public static void printMenu(){
+    public static void printMenu() {
         System.out.println("\tБинарное дерево");
         System.out.println("1 - Добавить элемент");
         System.out.println("2 - Вывод дерева");
@@ -120,8 +131,8 @@ public class BinaryTree {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             String inputRaw = input.readLine();
             String[] inputSplit = inputRaw.split(" ");
-            if(inputSplit.length > 1) continue;
-            if(!inputCheck(inputSplit)) continue;
+            if (inputSplit.length > 1) continue;
+            if (!inputCheck(inputSplit)) continue;
             int x = Integer.parseInt(inputSplit[0]);
             return x;
         }
@@ -133,10 +144,10 @@ public class BinaryTree {
         System.out.println("Введите значение корневого узла:");
         int x = safeInput();
         tree.add(x);
-        while(true) {
+        while (true) {
             printMenu();
             String statement = scanner.nextLine();
-            switch(statement) {
+            switch (statement) {
                 case "1":
                     System.out.println("Введите значение нового эл.:");
                     int y = safeInput();

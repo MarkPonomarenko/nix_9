@@ -8,6 +8,7 @@ import java.util.Deque;
 import java.util.Scanner;
 
 public class BalancedBrackets {
+
     public static boolean isBalancedLine(String string) {
         Deque<Character> brackets = new ArrayDeque<Character>();
         for (int i = 0; i < string.length(); ++i) {
