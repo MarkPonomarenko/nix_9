@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class LifeSimulation {
+
     public static void printBoard(int[][] board) {
         System.out.print("  ");
         for (int i = 0; i < board[0].length; i++) {
