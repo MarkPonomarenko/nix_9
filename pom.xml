@@ -24,6 +24,7 @@
         <module>lib_string</module>
         <module>hw_2_strings</module>
         <module>module_1</module>
+        <module>hw_3_start_oop</module>
     </modules>
 
     <properties>
