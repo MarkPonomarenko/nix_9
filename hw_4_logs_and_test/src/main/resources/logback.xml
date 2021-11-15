@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-    <!--    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">-->
-    <!--        <target>System.out</target>-->
-    <!--        <encoder>-->
-    <!--            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
-    <!--        </encoder>-->
-    <!--    </appender>-->
-
-    <!--    <root level="info">-->
-    <!--        <appender-ref ref="console"/>-->
-    <!--    </root>-->
 
     <property name="HOME_LOG" value="logs"/>
     <property name="ARCHIVED_LOG" value="archived"/>
 
     <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--        <file>${HOME_LOG}/info.log</file>-->
         <file>${log.info}</file>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -31,7 +20,6 @@
     </appender>
 
     <appender name="warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--        <file>${HOME_LOG}/warn.log</file>-->
         <file>${log.warn}</file>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
