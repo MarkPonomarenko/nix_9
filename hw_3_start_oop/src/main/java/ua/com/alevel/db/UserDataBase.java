@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class UserDataBase {
+
     private User[] users;
     private static UserDataBase instance;
 

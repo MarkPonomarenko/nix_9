@@ -1,6 +1,7 @@
 package ua.com.alevel.entity;
 
 public class User {
+
     private int age;
     private String id;
     private String name;
