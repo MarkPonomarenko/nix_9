@@ -1,3 +1,5 @@
+package service;
+
 import ua.com.alevel.entity.Course;
 
 public class CourseGenerationUtil {

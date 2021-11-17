@@ -1,3 +1,4 @@
+package service;
 
 import org.junit.jupiter.api.*;
 import ua.com.alevel.entity.Course;

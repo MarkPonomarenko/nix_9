@@ -1,3 +1,5 @@
+package service;
+
 import ua.com.alevel.entity.Student;
 
 public class StudentGenerationUtil {
