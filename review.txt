@@ -16,3 +16,8 @@ hw_3 = 8
 
 ua/com/alevel/db/UserDataBase.java:15 - на это я уже не буду глаза закрывать)
 говорили об этом ... говорили ...
+
+ua/com/alevel/entity/Course.java:15
+ua/com/alevel/entity/Student.java:13
++ добавил скрин
+hw_4 = 7
