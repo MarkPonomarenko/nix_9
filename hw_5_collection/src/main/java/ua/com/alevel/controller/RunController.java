@@ -2,8 +2,6 @@ package ua.com.alevel.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.lang.reflect.ParameterizedType;
-import java.sql.SQLOutput;
 
 import ua.com.alevel.db.MSStorage;
 import ua.com.alevel.util.MathSet;
@@ -176,6 +174,10 @@ public class RunController {
                             break;
                         System.out.println("Неверный ввод!");
                     }
+                    if (count < mathSets.getSize()) {
+                        System.out.println("Недостаточно сетов!");
+                        return;
+                    }
                     String[] ids = new String[count];
                     System.out.println("Выберите MathSet'ы");
                     printAllSets();
@@ -206,13 +208,15 @@ public class RunController {
 
     public void printAllSets() {
         for (int i = 0; i < mathSets.findAll().length; ++i) {
-            System.out.println(mathSets.findAll()[i]);
+            if (mathSets.findAll()[i] != null)
+                System.out.println(mathSets.findAll()[i]);
         }
     }
 
     public void createHandler(BufferedReader input) {
         String choice;
         try {
+            printCreateOptions();
             while ((choice = input.readLine()) != null) {
                 createOptions(choice, input);
                 if (choice.equals("0")) {
@@ -701,7 +705,6 @@ public class RunController {
                     return;
                 }
                 printFeatureOptions();
-
             }
         } catch (Exception e) {
             e.printStackTrace();
