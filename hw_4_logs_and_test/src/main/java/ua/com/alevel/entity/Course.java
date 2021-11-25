@@ -5,7 +5,6 @@ import lombok.Setter;
 import lombok.ToString;
 import ua.com.alevel.util.CustomArray;
 
-
 @Getter
 @ToString
 public class Course {
