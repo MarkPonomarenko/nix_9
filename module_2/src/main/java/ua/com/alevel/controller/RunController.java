@@ -40,6 +40,7 @@ public class RunController {
     }
 
     public static void printMenu() {
+        System.out.println("\tМеню");
         System.out.println("1 - обработка дат");
         System.out.println("2 - поиск уникального имени");
         System.out.println("3 - поиск кратчайшего путя");
