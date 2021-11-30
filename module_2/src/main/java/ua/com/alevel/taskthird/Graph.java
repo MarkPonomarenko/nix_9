@@ -69,5 +69,4 @@ public class Graph {
             this.weight = weight;
         }
     }
-
 }
