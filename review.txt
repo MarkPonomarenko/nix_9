@@ -21,3 +21,6 @@ ua/com/alevel/entity/Course.java:15
 ua/com/alevel/entity/Student.java:13
 + добавил скрин
 hw_4 = 7
+
+module_2 = 9
+hw_5 = 9
