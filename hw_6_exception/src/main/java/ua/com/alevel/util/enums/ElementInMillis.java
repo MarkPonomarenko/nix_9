@@ -1,6 +1,6 @@
 package ua.com.alevel.util.enums;
 
-public enum ElementInMillis{
+public enum ElementInMillis {
 
     MILLI(1),
     SECOND(MILLI.getValue() / 1000),

@@ -7,8 +7,7 @@ public enum MillisInElement {
     HOUR(3600000L),
     DAY(86400000L),
     YEAR(31536000000L),
-    LEAP(31622400000L)
-    ;
+    LEAP(31622400000L);
 
     private long milli;
 

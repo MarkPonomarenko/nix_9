@@ -30,13 +30,13 @@ public class ArithmeticsController {
                 choice = input.readLine();
 
             }
-        } catch(IOException e) {
+        } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
 
     public static void options(String choice) {
-        switch(choice) {
+        switch (choice) {
             case "1":
                 addition();
                 break;
@@ -299,13 +299,13 @@ public class ArithmeticsController {
         boolean isValidValue = true;
         DateClass mySecondDate = null;
         try {
-        do {
-            if (!isValidValue) {
-                System.out.println("Неверный ввод!");
-            }
-            secondDate = reader.readLine();
-            isValidValue = false;
-        } while (CheckFormat.check(secondDate, formatType) || CheckFormat.checkFormatOfTime(secondDate));
+            do {
+                if (!isValidValue) {
+                    System.out.println("Неверный ввод!");
+                }
+                secondDate = reader.readLine();
+                isValidValue = false;
+            } while (CheckFormat.check(secondDate, formatType) || CheckFormat.checkFormatOfTime(secondDate));
 
             mySecondDate = convert.stringToDate(secondDate, formatType);
         } catch (IOException e) {
@@ -329,7 +329,7 @@ public class ArithmeticsController {
         int seconds = (int) MillisecondsToDate.millisToSeconds(result);
         System.out.println("Секунды:" + seconds);
         result -= DateToMilliseconds.secondsToMillis(seconds);
-        System.out.println("Миллисекунды:" + (int) result%1000);
+        System.out.println("Миллисекунды:" + (int) result % 1000);
         System.out.println();
     }
 
@@ -363,7 +363,7 @@ public class ArithmeticsController {
             String format = input.readLine();
             System.out.println("Дата:");
             System.out.print(datePrint.dateToString(date, format));
-        } catch(IOException e) {
+        } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }

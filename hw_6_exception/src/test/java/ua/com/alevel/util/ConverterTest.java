@@ -10,8 +10,8 @@ public class ConverterTest {
     private final DateClass date = new DateClass();
 
     @Test
-    public void shouldBeEqual(){
-        date.setValues(2003, 7,16,23,59,59,999);
+    public void shouldBeEqual() {
+        date.setValues(2003, 7, 16, 23, 59, 59, 999);
 
         long tmp = DateToMilliseconds.dateToMillis(date);
         DateClass tmpDate = MillisecondsToDate.millisToDate(tmp);

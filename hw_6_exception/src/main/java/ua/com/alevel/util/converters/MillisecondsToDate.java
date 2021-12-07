@@ -13,7 +13,7 @@ public class MillisecondsToDate {
 
     public static double millisToSeconds(long millis) {
         LOGGER_INFO.info("[Converter] Millis to seconds");
-        return millis* ElementInMillis.SECOND.getValue();
+        return millis * ElementInMillis.SECOND.getValue();
     }
 
     public static double millisToMinutes(long millis) {
@@ -63,7 +63,7 @@ public class MillisecondsToDate {
         LOGGER_INFO.info("[Converter] Millis to months");
         double result = 0;
         int it = 0;
-        while(true) {
+        while (true) {
             if (millis == 0)
                 return result;
             if (millis >= month_days[it]) {
@@ -105,14 +105,14 @@ public class MillisecondsToDate {
             }
             month++;
         }
-        date.setMillisecond((int)(millis % 1000));
-        date.setSecond((int)(seconds % 60));
-        date.setMinute((int)(minutes % 60));
-        date.setHour((int)(hours % 24));
+        date.setMillisecond((int) (millis % 1000));
+        date.setSecond((int) (seconds % 60));
+        date.setMinute((int) (minutes % 60));
+        date.setHour((int) (hours % 24));
         if (DateClass.leapYear(year)) {
-            date.setDay((int)((tmpD)%month_days[monthIt]));
+            date.setDay((int) ((tmpD) % month_days[monthIt]));
         } else {
-            date.setDay((int)((tmpD)%month_days[monthIt]) + 1);
+            date.setDay((int) ((tmpD) % month_days[monthIt]) + 1);
         }
         date.setMonth(((month) % 12) + 1);
         date.setYear(year);

@@ -15,7 +15,7 @@ public class DateSort {
     public static ArrayList<DateClass> sort(ArrayList<DateClass> dates, String type) {
         int size = dates.size();
         boolean flag;
-        switch(type) {
+        switch (type) {
             case "1":
                 LOGGER_INFO.info("[Sorter] Ascending sort");
                 do {
@@ -29,7 +29,7 @@ public class DateSort {
                             }
                         }
                     }
-                } while(!flag);
+                } while (!flag);
                 return dates;
             case "0":
                 LOGGER_INFO.info("[Sorter] Descending sort");
@@ -44,7 +44,7 @@ public class DateSort {
                             }
                         }
                     }
-                } while(!flag);
+                } while (!flag);
                 return dates;
             default:
                 System.out.println("Сортировка не была произведена!");

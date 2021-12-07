@@ -31,8 +31,8 @@ public class ArithmeticsTest {
         long difference = Arithmetics.difference(dateFirst, dateSecond);
         Assertions.assertEquals(200, difference);
 
-        dateSecond.setValues(2003,7,16,0,0,0,0);
-        dateFirst.setValues(2003,7,18,0,0,0,0);
+        dateSecond.setValues(2003, 7, 16, 0, 0, 0, 0);
+        dateFirst.setValues(2003, 7, 18, 0, 0, 0, 0);
         difference = Arithmetics.difference(dateFirst, dateSecond);
 
 

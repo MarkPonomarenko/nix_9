@@ -19,7 +19,7 @@ public class RunController {
                 }
                 options(choice);
             }
-        } catch(IOException e) {
+        } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }

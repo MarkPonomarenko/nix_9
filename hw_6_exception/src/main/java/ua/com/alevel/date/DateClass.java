@@ -30,17 +30,17 @@ public class DateClass {
     }
 
     public void setValues(int y, int m, int d, int h, int min, int sec, int mils) {
-            if (dateValidation(y, m, d) && timeValidation(h, min, sec, mils)) {
-                this.year = y;
-                this.month = m;
-                this.day = d;
-                this.hour = h;
-                this.minute = min;
-                this.second = sec;
-                this.millisecond = mils;
-            } else {
-                System.out.println("Ошибка ввода! Проверьте ещё раз");
-            }
+        if (dateValidation(y, m, d) && timeValidation(h, min, sec, mils)) {
+            this.year = y;
+            this.month = m;
+            this.day = d;
+            this.hour = h;
+            this.minute = min;
+            this.second = sec;
+            this.millisecond = mils;
+        } else {
+            System.out.println("Ошибка ввода! Проверьте ещё раз");
+        }
     }
 
     public static boolean timeValidation(int h, int m, int s, int ms) {
@@ -69,7 +69,7 @@ public class DateClass {
         int month = m - 1;
         if (m < 0 || m > 11) {
             System.out.println("Неверное значение - месяц");
-            valid =  false;
+            valid = false;
         }
         int maxD = days[month];
         if (month == 1 && leapYear(y)) {
