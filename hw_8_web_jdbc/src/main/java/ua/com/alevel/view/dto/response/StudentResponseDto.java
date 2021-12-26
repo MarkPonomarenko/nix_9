@@ -2,13 +2,14 @@ package ua.com.alevel.view.dto.response;
 
 import ua.com.alevel.persistence.entity.Student;
 
-public class StudentResponseDto extends ResponseDto{
+public class StudentResponseDto extends ResponseDto {
 
     private String lastName;
     private String firstName;
     private Integer age;
 
-    public StudentResponseDto() {}
+    public StudentResponseDto() {
+    }
 
     public StudentResponseDto(Student student) {
         setId(student.getId());

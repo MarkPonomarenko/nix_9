@@ -1,6 +1,6 @@
 package ua.com.alevel.persistence.entity;
 
-public class Accounting extends BaseEntity{
+public class Accounting extends BaseEntity {
 
     private Long studentId;
     private Long courseId;

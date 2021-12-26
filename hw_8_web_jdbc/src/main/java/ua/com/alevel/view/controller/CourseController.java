@@ -27,7 +27,7 @@ import static ua.com.alevel.util.WebRequestUtil.DEFAULT_ORDER_PARAM_VALUE;
 
 @Controller
 @RequestMapping("/courses")
-public class CourseController extends AbstractController{
+public class CourseController extends AbstractController {
 
     private final CourseFacade courseFacade;
     private final StudentFacade studentFacade;

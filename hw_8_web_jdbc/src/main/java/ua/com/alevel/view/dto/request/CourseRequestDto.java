@@ -1,6 +1,6 @@
 package ua.com.alevel.view.dto.request;
 
-public class CourseRequestDto extends RequestDto{
+public class CourseRequestDto extends RequestDto {
 
     private String title;
     private String teacher;

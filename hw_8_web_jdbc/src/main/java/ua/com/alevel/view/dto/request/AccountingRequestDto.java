@@ -1,6 +1,6 @@
 package ua.com.alevel.view.dto.request;
 
-public class AccountingRequestDto extends RequestDto{
+public class AccountingRequestDto extends RequestDto {
 
     private Long courseId;
     private Long studentId;

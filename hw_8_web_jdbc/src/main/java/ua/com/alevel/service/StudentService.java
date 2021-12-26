@@ -4,7 +4,7 @@ import ua.com.alevel.persistence.entity.Student;
 
 import java.util.List;
 
-public interface StudentService extends BaseService<Student>{
+public interface StudentService extends BaseService<Student> {
 
     List<Student> findAll();
 }

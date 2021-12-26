@@ -1,6 +1,6 @@
 package ua.com.alevel.persistence.entity;
 
-public class Course extends BaseEntity{
+public class Course extends BaseEntity {
 
     private String title;
     private String teacher;

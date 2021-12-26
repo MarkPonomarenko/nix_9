@@ -53,6 +53,7 @@ public abstract class AbstractController {
     protected void showMessage(RedirectAttributes redirectAttributes, boolean show) {
         redirectAttributes.addFlashAttribute("showMessage", show);
     }
+
     protected static class HeaderName {
 
         private String columnName;

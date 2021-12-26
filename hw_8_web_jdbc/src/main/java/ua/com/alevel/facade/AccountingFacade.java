@@ -7,7 +7,7 @@ import ua.com.alevel.view.dto.response.StudentResponseDto;
 
 import java.util.List;
 
-public interface AccountingFacade extends BaseFacade<AccountingRequestDto, AccountingResponseDto>{
+public interface AccountingFacade extends BaseFacade<AccountingRequestDto, AccountingResponseDto> {
 
     List<StudentResponseDto> findCourseStudents(Long courseId);
 

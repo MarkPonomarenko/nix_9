@@ -4,7 +4,7 @@ import ua.com.alevel.persistence.entity.Accounting;
 
 import java.util.List;
 
-public interface AccountingDao extends BaseDao<Accounting>{
+public interface AccountingDao extends BaseDao<Accounting> {
 
     List<Accounting> findCourseStudents(Long courseId);
 

@@ -2,7 +2,7 @@ package ua.com.alevel.view.dto.response;
 
 import ua.com.alevel.persistence.entity.Accounting;
 
-public class AccountingResponseDto extends ResponseDto{
+public class AccountingResponseDto extends ResponseDto {
 
     private Long courseId;
     private Long studentId;

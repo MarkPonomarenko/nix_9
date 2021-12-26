@@ -2,14 +2,15 @@ package ua.com.alevel.view.dto.response;
 
 import ua.com.alevel.persistence.entity.Course;
 
-public class CourseResponseDto extends ResponseDto{
+public class CourseResponseDto extends ResponseDto {
 
     private String title;
     private String teacher;
     private Integer credits;
     private Integer studentCount;
 
-    public CourseResponseDto() {}
+    public CourseResponseDto() {
+    }
 
     public CourseResponseDto(Course course) {
         setId(course.getId());

@@ -5,7 +5,7 @@ import ua.com.alevel.view.dto.response.CourseResponseDto;
 
 import java.util.List;
 
-public interface CourseFacade extends BaseFacade<CourseRequestDto, CourseResponseDto>{
+public interface CourseFacade extends BaseFacade<CourseRequestDto, CourseResponseDto> {
 
     List<CourseResponseDto> findAll();
 }

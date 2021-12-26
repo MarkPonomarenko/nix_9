@@ -4,7 +4,7 @@ import ua.com.alevel.persistence.entity.Accounting;
 
 import java.util.List;
 
-public interface AccountingService extends BaseService<Accounting>{
+public interface AccountingService extends BaseService<Accounting> {
 
     List<Accounting> findCourseStudents(Long courseId);
 

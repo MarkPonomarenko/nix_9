@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-import static ua.com.alevel.util.query.JpaQuery.*;
+import static ua.com.alevel.util.query.SqlQuery.*;
 
 @Service
 public class AccountingDaoImpl implements AccountingDao {
@@ -26,7 +26,7 @@ public class AccountingDaoImpl implements AccountingDao {
 
     @Override
     public void create(Accounting accounting) {
-        try (PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(CREATE_ACCOUNTING)){
+        try (PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(CREATE_ACCOUNTING)) {
             preparedStatement.setLong(1, accounting.getCourseId());
             preparedStatement.setLong(2, accounting.getStudentId());
             preparedStatement.executeUpdate();
@@ -38,8 +38,8 @@ public class AccountingDaoImpl implements AccountingDao {
 
     @Override
     public void update(Accounting accounting) {
-        try (PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(UPDATE_STUDENT_BY_ID + accounting.getId())){
-            preparedStatement.setLong(1,accounting.getCourseId());
+        try (PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(UPDATE_STUDENT_BY_ID + accounting.getId())) {
+            preparedStatement.setLong(1, accounting.getCourseId());
             preparedStatement.setLong(2, accounting.getStudentId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -60,7 +60,7 @@ public class AccountingDaoImpl implements AccountingDao {
     @Override
     public boolean existById(Long id) {
         long counter = 0;
-        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(EXIST_ACCOUNTING_BY_ID + id)){
+        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(EXIST_ACCOUNTING_BY_ID + id)) {
             while (resultSet.next()) {
                 counter = resultSet.getLong("COUNT(*)");
             }
@@ -72,7 +72,7 @@ public class AccountingDaoImpl implements AccountingDao {
 
     @Override
     public Accounting findById(Long id) {
-        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(FIND_ACCOUNTING_BY_ID + id)){
+        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(FIND_ACCOUNTING_BY_ID + id)) {
             while (resultSet.next()) {
                 return resultSetToAccounting(resultSet);
             }
@@ -93,7 +93,7 @@ public class AccountingDaoImpl implements AccountingDao {
                 pageLimit + "," +
                 request.getPageSize();
 
-        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(query)){
+        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(query)) {
             while (resultSet.next()) {
                 Accounting accounting = resultSetToAccounting(resultSet);
                 accountings.add(accounting);
@@ -130,8 +130,8 @@ public class AccountingDaoImpl implements AccountingDao {
     @Override
     public List<Accounting> findCourseStudents(Long courseId) {
         List<Accounting> accountings = new ArrayList<>();
-        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(FIND_STUDENTS_BY_COURSE_ID + courseId)){
-            while(resultSet.next()) {
+        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(FIND_STUDENTS_BY_COURSE_ID + courseId)) {
+            while (resultSet.next()) {
                 accountings.add(resultSetToAccounting(resultSet));
             }
         } catch (SQLException e) {
@@ -143,8 +143,8 @@ public class AccountingDaoImpl implements AccountingDao {
     @Override
     public List<Accounting> findStudentCourses(Long studentId) {
         List<Accounting> accountings = new ArrayList<>();
-        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(FIND_COURSES_BY_STUDENT_ID + studentId)){
-            while(resultSet.next()) {
+        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(FIND_COURSES_BY_STUDENT_ID + studentId)) {
+            while (resultSet.next()) {
                 accountings.add(resultSetToAccounting(resultSet));
             }
         } catch (SQLException throwables) {
@@ -155,11 +155,11 @@ public class AccountingDaoImpl implements AccountingDao {
 
     @Override
     public Accounting findByBothId(Long courseId, Long studentId) {
-        try (PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(FIND_ACCOUNTING_BY_COURSE_STUDENT_IDS)){
+        try (PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(FIND_ACCOUNTING_BY_COURSE_STUDENT_IDS)) {
             preparedStatement.setLong(1, courseId);
             preparedStatement.setLong(2, studentId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 return resultSetToAccounting(resultSet);
             }
 

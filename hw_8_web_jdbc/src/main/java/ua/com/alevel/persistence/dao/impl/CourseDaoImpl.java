@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.*;
 
-import static ua.com.alevel.util.query.JpaQuery.*;
+import static ua.com.alevel.util.query.SqlQuery.*;
 
 @Service
 public class CourseDaoImpl implements CourseDao {
@@ -28,7 +28,7 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public void create(Course course) {
-        try (PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(CREATE_COURSE)){
+        try (PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(CREATE_COURSE)) {
             preparedStatement.setTimestamp(1, new Timestamp(course.getCreated().getTime()));
             preparedStatement.setTimestamp(2, new Timestamp(course.getUpdated().getTime()));
             preparedStatement.setString(3, course.getTitle());
@@ -43,7 +43,7 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public void update(Course course) {
-        try (PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(UPDATE_COURSE_BY_ID + course.getId())){
+        try (PreparedStatement preparedStatement = jpaConfig.getConnection().prepareStatement(UPDATE_COURSE_BY_ID + course.getId())) {
             preparedStatement.setString(1, course.getTitle());
             preparedStatement.setString(2, course.getTeacher());
             preparedStatement.setInt(3, course.getCredits());
@@ -67,7 +67,7 @@ public class CourseDaoImpl implements CourseDao {
     @Override
     public boolean existById(Long id) {
         long counter = 0;
-        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(EXIST_COURSE_BY_ID + id)){
+        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(EXIST_COURSE_BY_ID + id)) {
             while (resultSet.next()) {
                 counter = resultSet.getLong("COUNT(*)");
             }
@@ -79,7 +79,7 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public Course findById(Long id) {
-        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(FIND_COURSE_BY_ID + id)){
+        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(FIND_COURSE_BY_ID + id)) {
             while (resultSet.next()) {
                 return resultSetToCourse(resultSet);
             }
@@ -100,7 +100,7 @@ public class CourseDaoImpl implements CourseDao {
                 request.getOrder() + " limit " +
                 pageLimit + "," +
                 request.getPageSize();
-        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(query)){
+        try (ResultSet resultSet = jpaConfig.getStatement().executeQuery(query)) {
             while (resultSet.next()) {
                 CourseResult courseResult = ResultSetToCustomCourse(resultSet);
                 courses.add(courseResult.getCourse());

@@ -1,8 +1,8 @@
 package ua.com.alevel.util.query;
 
-public class JpaQuery {
+public class SqlQuery {
 
-    private JpaQuery() {
+    private SqlQuery() {
 
     }
 
@@ -30,11 +30,8 @@ public class JpaQuery {
 
 
     public static final String CREATE_ACCOUNTING = "INSERT INTO accounting VALUES(default,?,?)";
-    public static final String UPDATE_ACCOUNTING_BY_ID = "UPDATE accounting SET course_id = ?, student_id = ? WHERE id = ";
     public static final String DELETE_ACCOUNTING_BY_ID = "DELETE FROM accounting WHERE id = ";
     public static final String EXIST_ACCOUNTING_BY_ID = "SELECT COUNT(*) FROM accounting WHERE id = ";
-    public static final String FIND_ALL_ACCOUNTINGS = "SELECT * FROM accounting";
-    public static final String FIND_ACCOUNTING_WITH_OPTIONS = "SELECT * FROM accounting BY ";
     public static final String FIND_ACCOUNTING_BY_ID = "SELECT * FROM accounting WHERE id = ";
     public static final String FIND_ACCOUNTING_BY_COURSE_STUDENT_IDS = "SELECT * FROM accounting WHERE course_id = ? AND student_id = ?";
 

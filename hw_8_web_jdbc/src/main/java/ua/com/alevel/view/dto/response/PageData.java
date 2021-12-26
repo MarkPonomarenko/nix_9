@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PageData<RES extends ResponseDto>{
+public class PageData<RES extends ResponseDto> {
 
     private int currentPage;
     private int pageSize;
@@ -27,7 +27,7 @@ public class PageData<RES extends ResponseDto>{
         this.totalPageSize = 20;
         this.itemsSize = 0;
         this.items = new ArrayList<>();
-        this.pageSizeItems = new int[]{10,25,50,100};
+        this.pageSizeItems = new int[]{10, 25, 50, 100};
         this.showFirst = false;
         this.showPrevious = false;
         this.showNext = false;
@@ -36,12 +36,12 @@ public class PageData<RES extends ResponseDto>{
 
     public void initPaginationState(int page) {
         long from = (long) (page - 1) * pageSize + 1;
-        long to = (long)page * pageSize;
+        long to = (long) page * pageSize;
         if (to > itemsSize)
             to = itemsSize;
         this.setCurrentShowFromEntries(from);
         this.setCurrentShowToEntries(to);
-        this.totalPageSize = (int)(itemsSize/pageSize + 1);
+        this.totalPageSize = (int) (itemsSize / pageSize + 1);
         this.showFirst = page != 1;
         this.showLast = page != totalPageSize;
         this.showNext = page != totalPageSize;
