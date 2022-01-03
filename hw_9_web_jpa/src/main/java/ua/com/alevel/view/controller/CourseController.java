@@ -73,7 +73,6 @@ public class CourseController extends AbstractController{
         model.addAttribute("createUrl", "/courses/all");
         model.addAttribute("pageData", response);
         model.addAttribute("cardHeader", "All Courses");
-        System.out.println(response);
         return "pages/course/course_all";
     }
 

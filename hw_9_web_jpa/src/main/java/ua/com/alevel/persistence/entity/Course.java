@@ -12,7 +12,7 @@ public class Course extends BaseEntity {
     private String teacher;
     private Integer credits;
 
-    @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE }, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "cour_stud",
             joinColumns = @JoinColumn(name = "course_id"),

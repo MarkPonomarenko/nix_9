@@ -24,7 +24,7 @@ import static ua.com.alevel.util.WebRequestUtil.DEFAULT_ORDER_PARAM_VALUE;
 
 @Controller
 @RequestMapping("/students")
-public class StudentController extends AbstractController{
+public class StudentController extends AbstractController {
 
     private final CourseFacade courseFacade;
     private final StudentFacade studentFacade;
@@ -73,7 +73,6 @@ public class StudentController extends AbstractController{
         model.addAttribute("createUrl", "/students/all");
         model.addAttribute("pageData", response);
         model.addAttribute("cardHeader", "All Students");
-        System.out.println(response);
         return "pages/student/student_all";
     }
 
