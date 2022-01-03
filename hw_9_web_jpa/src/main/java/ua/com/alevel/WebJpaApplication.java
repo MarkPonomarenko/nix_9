@@ -18,9 +18,4 @@ public class WebJpaApplication {
         SpringApplication.run(WebJpaApplication.class, args);
     }
 
-
-    @EventListener(ApplicationReadyEvent.class)
-    public void setUp() {
-
-    }
 }
