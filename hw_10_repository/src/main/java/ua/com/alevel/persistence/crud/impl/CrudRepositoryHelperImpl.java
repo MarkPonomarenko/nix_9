@@ -14,7 +14,7 @@ import ua.com.alevel.persistence.repository.AbstractRepository;
 import java.util.Optional;
 
 @Service
-public class CrudRepositoryHelperImpl <
+public class CrudRepositoryHelperImpl<
         ENT extends BaseEntity,
         REP extends AbstractRepository<ENT>>
         implements CrudRepositoryHelper<ENT, REP> {

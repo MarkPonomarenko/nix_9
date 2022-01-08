@@ -11,7 +11,7 @@ import org.springframework.context.event.EventListener;
 @SpringBootApplication(exclude = {
         DataSourceAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class })
+        HibernateJpaAutoConfiguration.class})
 public class WebJpaApplication {
 
     public static void main(String[] args) {

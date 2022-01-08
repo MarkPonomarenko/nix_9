@@ -8,7 +8,6 @@ import java.util.Date;
 public class StudentResponseDto extends ResponseDto {
 
 
-
     private String lastName;
     private String firstName;
     private Integer age;

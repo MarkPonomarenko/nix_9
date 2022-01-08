@@ -7,9 +7,10 @@ import ua.com.alevel.persistence.repository.AbstractRepository;
 
 import java.util.Optional;
 
-public interface CrudRepositoryHelper <ENT extends BaseEntity, REP extends AbstractRepository<ENT>>{
+public interface CrudRepositoryHelper<ENT extends BaseEntity, REP extends AbstractRepository<ENT>> {
 
     void create(REP repository, ENT entity);
+
     void update(REP repository, ENT entity);
 
     void delete(REP repository, Long id);

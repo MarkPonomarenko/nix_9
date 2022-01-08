@@ -39,7 +39,7 @@ public class PageData<RES extends ResponseDto> {
         long from = (long) (page - 1) * pageSize + 1;
         long to = (long) page * pageSize;
         if (to > items.size())
-            to = items.size() + pageSize*(page-1);
+            to = items.size() + pageSize * (page - 1);
         this.setCurrentShowFromEntries(from);
         this.setCurrentShowToEntries(to);
         this.totalPageSize = (int) (itemsSize / pageSize + 1);

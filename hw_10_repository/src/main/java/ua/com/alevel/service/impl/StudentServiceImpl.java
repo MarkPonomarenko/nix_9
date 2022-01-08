@@ -20,7 +20,7 @@ import java.util.Set;
 public class StudentServiceImpl implements StudentService {
 
     private final CrudRepositoryHelper<Course, CourseRepository> courseRepositoryHelper;
-    private final CrudRepositoryHelper<Student , StudentRepository> studentRepositoryHelper;
+    private final CrudRepositoryHelper<Student, StudentRepository> studentRepositoryHelper;
     private final CourseRepository courseRepository;
     private final StudentRepository studentRepository;
 

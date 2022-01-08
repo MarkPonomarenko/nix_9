@@ -24,7 +24,6 @@ public class Student extends BaseEntity {
         courses = new HashSet<>();
     }
 
-
     public String getLastName() {
         return lastName;
     }
