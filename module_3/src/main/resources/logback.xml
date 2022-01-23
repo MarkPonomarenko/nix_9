@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
 
+    <root level="info">
+        <appender-ref ref="console"/>
+    </root>
+
+    <property name="HOME_LOG" value="logs"/>
     <property name="ARCHIVED_LOG" value="archived"/>
 
     <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${log.info}</file>
+        <file>module_3/${HOME_LOG}/info.log</file>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${log.path}/${ARCHIVED_LOG}/info/app.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+
             <maxFileSize>1MB</maxFileSize>
             <totalSizeCap>2GB</totalSizeCap>
             <maxHistory>60</maxHistory>
         </rollingPolicy>
 
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${log.warn}</file>
+        <file>module_3/${HOME_LOG}/warn.log</file>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${log.path}/${ARCHIVED_LOG}/warn/app.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
@@ -29,12 +41,12 @@
         </rollingPolicy>
 
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${log.error}</file>
+        <file>module_3/${HOME_LOG}/error.log</file>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${log.path}/${ARCHIVED_LOG}/error/app.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
@@ -44,7 +56,7 @@
         </rollingPolicy>
 
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
