@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>User Dashboard</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-2 mt-2">
+                <div class="card-header">
+                    Dashboard
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>id</th>
+                            <td th:text="${user.getId()}"></td>
+                        </tr>
+                        <tr>
+                            <th>name</th>
+                            <td th:text="${user.getName()}"></td>
+                        </tr>
+                        <tr>
+                            <th>phone</th>
+                            <td th:text="${user.getPhone()}"></td>
+                        </tr>
+                        <tr>
+                            <th>created</th>
+                            <td th:text="${user.getTimeString()}"></td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card mb-2 mt-2">
+                                <div class="card-header">
+                                    All Accounts
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-sm table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>balance</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="account,iter : ${accounts}">
+                                            <td th:text="${iter.count}"></td>
+                                            <td th:text="${account.getBalance()}"></td>
+                                            <td>
+                                                <a th:href="@{'/accounts/transfer/' + ${account.getId()}}" type="button" class="btn btn-primary">transfer</a>
+                                            </td>
+                                            <td>
+                                                <a th:href="@{'/accounts/details/' + ${account.getId()}}" type="button" class="btn btn-primary">details</a>
+                                            </td>
+                                            <td>
+                                                <a th:href = "@{'/accounts/delete/' + ${account.getId()}}" type = "button" class="btn btn-danger">remove</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <td>
+                        <a th:href="@{'/accounts/new/' + ${user.getId()}}" type="button" class="btn btn-primary">Create New Account</a>
+                    </td>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

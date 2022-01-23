@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Account Dashboard</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-2 mt-2">
+                <div class="card-header">
+                    Dashboard
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>id</th>
+                            <td th:text="${account.getId()}"></td>
+                        </tr>
+                        <tr>
+                            <th>owner</th>
+                            <td th:text="${account.getOwner().getName()}"></td>
+                        </tr>
+                        <tr>
+                            <th>balance</th>
+                            <td th:text="${account.getBalance()}"></td>
+                        </tr>
+                        <tr>
+                            <th>created</th>
+                            <td th:text="${account.getTimeString()}"></td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card mb-2 mt-2">
+                                <div class="card-header">
+                                    All Operations
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-sm table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>value</th>
+                                            <th>time</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="operation,iter : ${operations}">
+                                            <td th:text="${iter.count}"></td>
+                                            <td th:text="${operation.getValue()}"></td>
+                                            <td th:text="${operation.getTime()}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <td>
+                        <a th:href="@{'/accounts/csv_get/' + ${account.getId()}}" type="button" class="btn btn-primary">Get CSV</a>
+                    </td>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

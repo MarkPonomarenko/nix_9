@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>New Transfer</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>New Transfer</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" th:action="@{/accounts/transfer}" th:object="${operationFrom}" method="post">
+                        <div class="form-group">
+                            <label for="value">Value</label>
+                            <input type="number" min = "1" th:max = "${accountFrom.getBalance()}" class="form-control" id="value" aria-describedby="Title" placeholder="Enter value" th:field="*{value}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

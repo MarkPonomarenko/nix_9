@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table}">
+<head>
+    <meta charset="utf-8">
+    <title>Accounts</title>
+</head>
+<body>
+<div layout:fragment="data_table_content">
+    <tr th:each="account,iter : ${pageData.getItems()}">
+        <td th:text="${iter.count}"></td>
+        <td th:text="${account.getOwner().getName()}"></td>
+        <td th:text="${account.getBalance()}"></td>
+        <td th:text="${account.getTimeString()}"></td>
+    </tr>
+</div>
+</body>
+</html>
