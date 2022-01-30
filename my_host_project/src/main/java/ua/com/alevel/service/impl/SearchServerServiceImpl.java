@@ -2,7 +2,6 @@ package ua.com.alevel.service.impl;
 
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHits;
@@ -40,7 +39,7 @@ public class SearchServerServiceImpl implements SearchServerService {
                         ServerIndex.class,
                         IndexCoordinates.of(SERVER_INDEX));
         final List<String> suggestions = new ArrayList<>();
-        searchSuggestions.getSearchHits().forEach(searchHit-> suggestions.add(searchHit.getContent().getModel()));
+        searchSuggestions.getSearchHits().forEach(searchHit -> suggestions.add(searchHit.getContent().getModel()));
         return suggestions;
     }
 }

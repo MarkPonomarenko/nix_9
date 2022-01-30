@@ -16,7 +16,6 @@ import ua.com.alevel.facade.PLPFacade;
 import ua.com.alevel.facade.ProviderFacade;
 import ua.com.alevel.facade.ServerFacade;
 import ua.com.alevel.persistence.type.CPU;
-import ua.com.alevel.persistence.type.Intel;
 import ua.com.alevel.web.controller.AbstractController;
 import ua.com.alevel.web.dto.request.ServerRequestDto;
 import ua.com.alevel.web.dto.response.PageData;
@@ -73,9 +72,6 @@ public class AdminServerController extends AbstractController {
         model.addAttribute("server", new ServerRequestDto());
         model.addAttribute("providerList", providerFacade.findAll());
         model.addAttribute("types", CPU.values());
-        System.out.println(CPU.values()[0]);
-        model.addAttribute("intel", Intel.values());
-        System.out.println(Intel.values()[0].getName());
         return "pages/admin/server/server_new";
     }
 

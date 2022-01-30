@@ -12,10 +12,6 @@ public class ServerVisibleGenerationListener {
     @PostPersist
     @PostUpdate
     public void generateServerVisible(Server server) {
-        if (server.getPersonal() != null) {
-            server.setVisible(false);
-        } else {
-            server.setVisible(true);
-        }
+        server.setVisible(server.getPersonal() == null);
     }
 }

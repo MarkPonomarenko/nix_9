@@ -1,7 +1,6 @@
 package ua.com.alevel.persistence.entity.server;
 
 
-import org.springframework.lang.Nullable;
 import ua.com.alevel.persistence.entity.BaseEntity;
 import ua.com.alevel.persistence.entity.provider.Provider;
 import ua.com.alevel.persistence.entity.user.Personal;
@@ -11,7 +10,6 @@ import ua.com.alevel.persistence.type.CPU;
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table(name = "servers")
@@ -37,7 +35,7 @@ public class Server extends BaseEntity {
     private String cpuModel;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="provider_id", nullable = false)
+    @JoinColumn(name = "provider_id", nullable = false)
     private Provider provider;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

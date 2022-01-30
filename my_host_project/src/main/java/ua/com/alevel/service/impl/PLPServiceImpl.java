@@ -34,6 +34,7 @@ public class PLPServiceImpl implements PLPService {
             if (provider.isEmpty()) {
                 throw new EntityNotFoundException("this provider not found");
             }
+
             return serverRepository.findByProvider(provider.get());
         }
         if (queryMap.get(WebUtil.SERVER_SEARCH_PARAM) != null) {

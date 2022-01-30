@@ -5,14 +5,12 @@ import org.springframework.web.context.request.WebRequest;
 import ua.com.alevel.facade.PersonalFacade;
 import ua.com.alevel.persistence.datatable.DataTableRequest;
 import ua.com.alevel.persistence.datatable.DataTableResponse;
-import ua.com.alevel.persistence.entity.server.Server;
 import ua.com.alevel.persistence.entity.user.Personal;
 import ua.com.alevel.service.PersonalCrudService;
 import ua.com.alevel.util.WebUtil;
 import ua.com.alevel.web.dto.request.register.AuthDto;
 import ua.com.alevel.web.dto.response.PageData;
 import ua.com.alevel.web.dto.response.PersonalResponseDto;
-import ua.com.alevel.web.dto.response.ServerResponseDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

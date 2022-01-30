@@ -14,7 +14,7 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 @Configuration
 @EnableElasticsearchRepositories(basePackages
         = "ua.com.alevel.elastic.repository")
-@ComponentScan(basePackages = { "ua.com.alevel" })
+@ComponentScan(basePackages = {"ua.com.alevel"})
 public class ElasticsearchConfig {
 
 

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import ua.com.alevel.logger.LoggerLevel;
+import ua.com.alevel.logger.LoggerService;
 import ua.com.alevel.persistence.crud.CrudRepositoryHelper;
 import ua.com.alevel.persistence.datatable.DataTableRequest;
 import ua.com.alevel.persistence.datatable.DataTableResponse;
@@ -21,13 +23,15 @@ import java.util.Optional;
 @Service
 public class ServerServiceImpl implements ServerService {
 
+    private final LoggerService loggerService;
     private final ServerRepository serverRepository;
     private final ProviderService providerService;
     private final PersonalRepository personalRepository;
     private final CrudRepositoryHelper<Personal, PersonalRepository> crudRepositoryHelperPersonal;
     private final CrudRepositoryHelper<Server, ServerRepository> crudRepositoryHelper;
 
-    public ServerServiceImpl(ServerRepository serverRepository, ProviderService providerService, PersonalRepository personalRepository, CrudRepositoryHelper<Personal, PersonalRepository> crudRepositoryHelperPersonal, CrudRepositoryHelper<Server, ServerRepository> crudRepositoryHelper) {
+    public ServerServiceImpl(LoggerService loggerService, ServerRepository serverRepository, ProviderService providerService, PersonalRepository personalRepository, CrudRepositoryHelper<Personal, PersonalRepository> crudRepositoryHelperPersonal, CrudRepositoryHelper<Server, ServerRepository> crudRepositoryHelper) {
+        this.loggerService = loggerService;
         this.serverRepository = serverRepository;
         this.providerService = providerService;
         this.personalRepository = personalRepository;
@@ -42,12 +46,14 @@ public class ServerServiceImpl implements ServerService {
         Provider provider = entity.getProvider();
         provider.addServer(entity);
         providerService.update(provider);
+        loggerService.commit(LoggerLevel.INFO, entity.getServerName() + " server created");
     }
 
     @Override
     @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public void update(Server entity) {
         crudRepositoryHelper.update(serverRepository, entity);
+        loggerService.commit(LoggerLevel.INFO, entity.getServerName() + " server updated");
     }
 
     @Override
@@ -61,6 +67,7 @@ public class ServerServiceImpl implements ServerService {
         }
         System.out.println(findById(id).get() + "deleted");
         crudRepositoryHelper.delete(serverRepository, id);
+        loggerService.commit(LoggerLevel.INFO, id + " server deleted");
     }
 
     @Override

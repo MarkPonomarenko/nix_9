@@ -8,8 +8,12 @@ import ua.com.alevel.web.dto.response.ResponseDto;
 public interface CrudFacade<REQ extends RequestDto, RES extends ResponseDto> {
 
     void create(REQ req);
+
     void update(REQ req, Long id);
+
     void delete(Long id);
+
     RES findById(Long id);
+
     PageData<RES> findAll(WebRequest request);
 }

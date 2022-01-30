@@ -6,6 +6,4 @@ import java.util.List;
 
 public interface PersonalCrudService extends BaseCrudService<Personal> {
     List<Personal> findAll();
-
-    void removeRentedById(Personal personal, Long serverId);
 }

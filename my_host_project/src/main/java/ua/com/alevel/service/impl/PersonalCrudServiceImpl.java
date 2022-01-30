@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ua.com.alevel.exception.EntityExistException;
+import ua.com.alevel.logger.LoggerLevel;
+import ua.com.alevel.logger.LoggerService;
 import ua.com.alevel.persistence.crud.CrudRepositoryHelper;
 import ua.com.alevel.persistence.datatable.DataTableRequest;
 import ua.com.alevel.persistence.datatable.DataTableResponse;
@@ -22,6 +24,7 @@ import java.util.Optional;
 @Service
 public class PersonalCrudServiceImpl implements PersonalCrudService {
 
+    private final LoggerService loggerService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final PersonalRepository personalRepository;
     private final ServerRepository serverRepository;
@@ -29,8 +32,9 @@ public class PersonalCrudServiceImpl implements PersonalCrudService {
     private final CrudRepositoryHelper<Personal, PersonalRepository> crudRepositoryHelper;
 
     public PersonalCrudServiceImpl(
-            BCryptPasswordEncoder bCryptPasswordEncoder,
+            LoggerService loggerService, BCryptPasswordEncoder bCryptPasswordEncoder,
             PersonalRepository personalRepository, ServerService serverService, ServerRepository serverRepository, CrudRepositoryHelper<Personal, PersonalRepository> crudRepositoryHelper, CrudRepositoryHelper<Server, ServerRepository> crudRepositoryHelperServer) {
+        this.loggerService = loggerService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.personalRepository = personalRepository;
         this.serverRepository = serverRepository;
@@ -42,15 +46,18 @@ public class PersonalCrudServiceImpl implements PersonalCrudService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ, rollbackFor = Exception.class)
     public void create(Personal personal) {
         if (personalRepository.existsByEmail(personal.getEmail())) {
+            loggerService.commit(LoggerLevel.WARN, personal.getEmail() + " personal creation failed");
             throw new EntityExistException("this personal exists");
         }
         personal.setPassword(bCryptPasswordEncoder.encode(personal.getPassword()));
         crudRepositoryHelper.create(personalRepository, personal);
+        loggerService.commit(LoggerLevel.INFO, personal.getEmail() + " created");
     }
 
     @Override
     public void update(Personal personal) {
         if (!personalRepository.existsByEmail(personal.getEmail())) {
+            loggerService.commit(LoggerLevel.WARN, personal.getEmail() + " personal update failed");
             throw new EntityExistException("this personal doesn't exist");
         }
         Personal updater = personalRepository.findByEmail(personal.getEmail());
@@ -59,6 +66,7 @@ public class PersonalCrudServiceImpl implements PersonalCrudService {
         updater.setBalance(personal.getBalance());
         updater.setRented(personal.getRented());
         crudRepositoryHelper.update(personalRepository, personal);
+        loggerService.commit(LoggerLevel.INFO, personal.getEmail() + " updated");
     }
 
     @Override
@@ -69,6 +77,7 @@ public class PersonalCrudServiceImpl implements PersonalCrudService {
             crudRepositoryHelperServer.update(serverRepository, server);
         }
         crudRepositoryHelper.delete(personalRepository, id);
+        loggerService.commit(LoggerLevel.INFO, id + " personal deleted");
     }
 
     @Override
@@ -89,11 +98,5 @@ public class PersonalCrudServiceImpl implements PersonalCrudService {
         return personalRepository.findAll();
     }
 
-    @Override
-    public void removeRentedById(Personal personal, Long serverId) {
 
-        Server server = serverRepository.findById(serverId).get();
-        System.out.println(server.getServerName());
-        personal.removeRented(server);
-    }
 }

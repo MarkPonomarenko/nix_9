@@ -2,7 +2,6 @@ package ua.com.alevel.facade.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.WebRequest;
-
 import ua.com.alevel.config.annotations.InjectLog;
 import ua.com.alevel.facade.PLPFacade;
 import ua.com.alevel.logger.LoggerLevel;
