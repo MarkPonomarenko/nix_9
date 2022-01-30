@@ -17,9 +17,6 @@
         <td th:text="${provider.getCountry().getName()}"></td>
         <td th:text="${#calendars.format(provider.getCreated(),'dd MMMM yyyy')}"></td>
         <td>
-            <a th:href="@{'/admin/providers/details/' + ${provider.getId()}}" type="button" class="btn btn-primary">details</a>
-        </td>
-        <td>
             <a th:href="@{'/admin/providers/delete/' + ${provider.getId()}}" type="button"
                class="btn btn-danger">delete</a>
         </td>

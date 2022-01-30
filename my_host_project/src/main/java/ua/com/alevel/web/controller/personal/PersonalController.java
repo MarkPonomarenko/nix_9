@@ -85,7 +85,7 @@ public class PersonalController {
     }
 
     @PostMapping("/search")
-    private String allBooksSearch(
+    private String allServerSearch(
             RedirectAttributes redirectAttributes, @RequestParam String serverSearch) {
         System.out.println(serverSearch + " triggered");
         redirectAttributes.addAttribute("serverSearch", serverSearch);

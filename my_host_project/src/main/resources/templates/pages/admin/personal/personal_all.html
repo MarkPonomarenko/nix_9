@@ -16,14 +16,10 @@
         <td th:text="${personal.getFirstName()}"></td>
         <td th:text="${personal.getLastName()}"></td>
         <td th:text="${personal.getBalance()}"></td>
-        <td th:text="${#calendars.format(server.getCreated(),'dd MMMM yyyy')}"></td>
+        <td th:text="${#calendars.format(personal.getCreated(),'dd MMMM yyyy')}"></td>
         <td>
-            <a th:href="@{'/admin/personals/details/' + ${server.getId()}}" type="button"
+            <a th:href="@{'/admin/personals/details/' + ${personal.getId()}}" type="button"
                class="btn btn-primary">details</a>
-        </td>
-        <td>
-            <a th:href="@{'/admin/personals/delete/' + ${server.getId()}}" type="button"
-               class="btn btn-danger">delete</a>
         </td>
     </tr>
 </div>

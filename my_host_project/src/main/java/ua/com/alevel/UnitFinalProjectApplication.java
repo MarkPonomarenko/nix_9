@@ -12,6 +12,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ua.com.alevel.elastic.index.ServerIndex;
 import ua.com.alevel.persistence.entity.user.Admin;
+import ua.com.alevel.persistence.entity.user.Personal;
 import ua.com.alevel.persistence.repository.user.AdminRepository;
 import ua.com.alevel.persistence.repository.user.PersonalRepository;
 import ua.com.alevel.service.PersonalCrudService;

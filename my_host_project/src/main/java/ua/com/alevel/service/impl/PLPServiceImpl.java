@@ -37,8 +37,8 @@ public class PLPServiceImpl implements PLPService {
             return serverRepository.findByProvider(provider.get());
         }
         if (queryMap.get(WebUtil.SERVER_SEARCH_PARAM) != null) {
-            String bookName = (String) queryMap.get(WebUtil.SERVER_SEARCH_PARAM);
-            return serverRepository.findByCpuModelContaining(bookName);
+            String serverName = (String) queryMap.get(WebUtil.SERVER_SEARCH_PARAM);
+            return serverRepository.findByCpuModelContaining(serverName);
         }
         return serverRepository.findAll();
     }

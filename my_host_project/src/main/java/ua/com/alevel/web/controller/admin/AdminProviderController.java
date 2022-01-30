@@ -51,7 +51,7 @@ public class AdminProviderController extends AbstractController {
     }
 
     @GetMapping("/new")
-    public String redirectToNewBookPage(Model model) {
+    public String redirectToNewServerPage(Model model) {
         model.addAttribute("provider", new ProviderRequestDto());
         return "pages/admin/provider/provider_new";
     }

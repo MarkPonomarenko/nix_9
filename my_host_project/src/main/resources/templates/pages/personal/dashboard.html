@@ -128,7 +128,7 @@
                         <td th:text="${server.getCpuSeries() + ' ' + server.getCpuModel()}"></td>
                         <td th:text="${server.getRam() + 'GB'}"></td>
                         <td th:text="${server.getPrice()} + ' '"></td>
-                        <td th:text="${server.getNextPayment()}"></td>
+                        <td th:text="${#calendars.format(server.getNextPayment(), 'dd/MM/yyyy hh:mm:ss')}"></td>
                         <td>
                             <a th:href="@{'/personal/dashboard/delete/' + ${server.getId()}}" type="button" class="btn btn-danger">delete</a>
                         </td>

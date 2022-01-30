@@ -41,7 +41,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**", "/js/**", "/registration", "/servers/**", "/").permitAll()
                 .antMatchers("/personal/**").access("hasRole('ROLE_PERSONAL')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-//                .antMatchers("/books/**", "/authors/**", "/publishers/**").access("hasAnyRole('ROLE_ADMIN', 'ROLE_PERSONAL')")
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/dashboard").permitAll()
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");

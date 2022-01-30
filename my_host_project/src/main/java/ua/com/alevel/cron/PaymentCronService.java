@@ -31,23 +31,18 @@ public class PaymentCronService {
         System.out.println("CRON triggered");
         List<Personal> personals = personalService.findAll();
         for (Personal personal : personals) {
+            System.out.println(personal.getEmail());
             if (personal.getRented() != null) {
                 for (Server server : personal.getRented()) {
                     Calendar c = Calendar.getInstance();
                     c.setTime(server.getUpdated());
                     c.add(Calendar.MINUTE, 5); //5 minutes for example
                     if (new Date().after(c.getTime())) {
-                        if (server.getPersonal().getBalance() < server.getPrice()) {
-                            personal.removeRented(server);
-                        } else {
-                            paymentService.paymentProcess(server.getPersonal().getId(), server.getPrice());
-                            server.setUpdated(new Date());
-                            serverService.update(server);
-                        }
+                        System.out.println(server.getServerName());
+                        paymentService.paymentProcess(server.getPersonal(), server);
                     }
                 }
             }
-            personalService.update(personal);
         }
     }
 }

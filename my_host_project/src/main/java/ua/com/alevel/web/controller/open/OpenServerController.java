@@ -18,7 +18,7 @@ public class OpenServerController {
     }
 
     @GetMapping
-    private String allBooks(Model model, WebRequest webRequest) {
+    private String allServers(Model model, WebRequest webRequest) {
         model.addAttribute("serverList", plpFacade.search(webRequest));
         return "pages/open/plp";
     }

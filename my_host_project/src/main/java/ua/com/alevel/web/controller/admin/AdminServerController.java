@@ -69,7 +69,7 @@ public class AdminServerController extends AbstractController {
     }
 
     @GetMapping("/new")
-    public String redirectToNewBookPage(Model model) {
+    public String redirectToNewServerPage(Model model) {
         model.addAttribute("server", new ServerRequestDto());
         model.addAttribute("providerList", providerFacade.findAll());
         model.addAttribute("types", CPU.values());

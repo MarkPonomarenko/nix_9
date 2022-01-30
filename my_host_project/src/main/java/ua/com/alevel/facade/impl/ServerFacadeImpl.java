@@ -71,8 +71,8 @@ public class ServerFacadeImpl implements ServerFacade {
 
     @Override
     public ServerResponseDto findById(Long id) {
-        Server book = serverService.findById(id).get();
-        return new ServerResponseDto(book);
+        Server server = serverService.findById(id).get();
+        return new ServerResponseDto(server);
     }
 
     @Override

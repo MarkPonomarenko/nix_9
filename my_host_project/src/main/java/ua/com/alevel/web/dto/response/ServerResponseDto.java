@@ -21,6 +21,7 @@ public class ServerResponseDto extends ResponseDto{
         setId(server.getId());
         setCreated(server.getCreated());
         setUpdated(server.getUpdated());
+        setVisible(server.getVisible());
         this.serverName = server.getServerName();
         this.ram = server.getRam();
         this.price =server.getPrice();
@@ -87,4 +88,5 @@ public class ServerResponseDto extends ResponseDto{
     public void setCpuModel(String cpuModel) {
         this.cpuModel = cpuModel;
     }
+
 }

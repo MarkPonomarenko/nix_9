@@ -59,12 +59,12 @@ public class ProviderFacadeImpl implements ProviderFacade {
     public PageData<ProviderResponseDto> findAll(WebRequest request) {
         DataTableRequest dataTableRequest = WebUtil.generateDataTableRequestByWebRequest(request);
         DataTableResponse<Provider> tableResponse = providerService.findAll(dataTableRequest);
-        List<ProviderResponseDto> books = tableResponse.getItems().stream().
+        List<ProviderResponseDto> servers = tableResponse.getItems().stream().
                 map(ProviderResponseDto::new).
                 collect(Collectors.toList());
 
         PageData<ProviderResponseDto> pageData = (PageData<ProviderResponseDto>) WebUtil.initPageData(tableResponse);
-        pageData.setItems(books);
+        pageData.setItems(servers);
         return pageData;
     }
 
