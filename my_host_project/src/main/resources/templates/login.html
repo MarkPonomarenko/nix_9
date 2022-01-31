@@ -52,7 +52,7 @@
 					<input type="email" th:field="*{email}" id = "email" placeholder="E-Mail">
 					<span class="has-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 
-					<input type="password" th:field="*{password}" id = "passworder" placeholder="Email">
+					<input type="password" th:field="*{password}" id = "passworder" placeholder="Password">
 					<span class="has-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
 
 					<input type="password" th:field="*{passwordConfirm}" id = "passwordConfirm" placeholder="Confirm password" required="">
