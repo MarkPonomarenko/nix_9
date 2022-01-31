@@ -24,7 +24,7 @@
         }
 
         .card {
-            width: 350px !important;
+            width: 300px !important;
             position: relative;
             display: -webkit-box;
             display: -ms-flexbox;
@@ -38,18 +38,92 @@
             background-color: #fff;
             background-clip: border-box;
             border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 23px;
             margin-top: 50px;
-            transition: .3s;
+            transition: .2s;
+            overflow: hidden;
+        }
+
+        .card .span-my {
+            position: absolute;
+            display: block;
+        }
+
+        .card .span-my:nth-child(1) {
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgb(33, 37, 41));
 
         }
 
-        .card-product-grid:hover {
-            -webkit-box-shadow: 0 4px 15px rgba(153, 153, 153, 0.3);
-            box-shadow: 0 4px 15px rgba(153, 153, 153, 0.3);
-            -webkit-transition: .3s;
-            transition: .3s
+        .card:hover .span-my:nth-child(1) {
+            left: 100%;
+            transition: 1s;
         }
+
+        .card .span-my:nth-child(2) {
+            top: -100%;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, rgb(33, 37, 41));
+        }
+
+        .card:hover .span-my:nth-child(2) {
+            top: 100%;
+            transition: 1s;
+            transition-delay: 0.25s;
+        }
+
+        .card .span-my:nth-child(3) {
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(270deg, transparent, rgb(33, 37, 41));
+        }
+
+        .card:hover .span-my:nth-child(3) {
+            right: 100%;
+            transition: 1s;
+            transition-delay: 0.5s;
+        }
+
+        .card .span-my:nth-child(4) {
+            bottom: -100%;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(360deg, transparent, rgb(33, 37, 41));
+            position: absolute;
+            display: block;
+        }
+
+        .card:hover .span-my:nth-child(4) {
+            bottom: 100%;
+            transition: 1s;
+            transition-delay: 0.75s;
+        }
+
+        .card:hover {
+            color: whitesmoke;
+            background: rgb(33, 37, 41);
+            box-shadow: 0 0 2px rgb(33, 37, 41), 0 0 4px rgb(33, 37, 41), 0 0 4px rgb(33, 37, 41);
+            transition-delay: 1s;
+        }
+
+        .card:hover .title {
+            color: whitesmoke;
+            transition-delay: 1s;
+        }
+
+        /*.card-product-grid:hover {*/
+        /*    -webkit-box-shadow: 0 4px 15px rgba(153, 153, 153, 0.3);*/
+        /*    box-shadow: 0 4px 15px rgba(153, 153, 153, 0.3);*/
+        /*    -webkit-transition: .3s;*/
+        /*    transition: .3s*/
+        /*}*/
 
         .card-product-grid .img-wrap {
             border-radius: 0.2rem 0.2rem 0 0;
@@ -60,16 +134,16 @@
             overflow: hidden
         }
 
-        .card:hover {
-            background: #212529;
-            color: white;
-            transition: .3s;
-        }
+        /*.card:hover {*/
+        /*    background: #212529;*/
+        /*    color: white;*/
+        /*    transition: .3s;*/
+        /*}*/
 
-        .card:hover a.title {
-            color: white;
-            transition: .3s;
-        }
+        /*.card:hover a.title {*/
+        /*    color: white;*/
+        /*    transition: .3s;*/
+        /*}*/
 
         .card-lg .img-wrap {
             height: 280px
@@ -173,6 +247,61 @@
         .fa {
             color: #FF5722
         }
+
+        .tcontainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .tcontainer a {
+            position: relative;
+            width: 90px;
+            height: 30px;
+            display: inline-block;
+            background: white;
+            margin: 5px;
+        }
+
+        .tcontainer a:nth-child(1):before,
+        .tcontainer a:nth-child(1):after {
+            background: linear-gradient(45deg, rgba(0, 204, 255, 0.5), rgba(33, 37, 41, 0.5), rgba(212, 0, 212, 0.5));
+        }
+
+        .tcontainer a:hover:before {
+            inset: -3px;
+        }
+
+        .tcontainer a:hover:after {
+            inset: -3px;
+            filter: blur(10px);
+        }
+
+        .tcontainer a:before,
+        .tcontainer a:after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #f00;
+            transition: 0.5s;
+        }
+
+        .tcontainer a span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            background: #0e1538;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: whitesmoke;
+            border: 1px solid #040a29;
+        }
     </style>
 </head>
 <body>
@@ -180,18 +309,18 @@
 
     <div class="container fixed-container d-flex justify-content-center">
         <div class="row mt-4 mb-4">
-            <!--            <div class="col col-md-6 col-lg-4 col-xl-3 d-flex align-items-stretch" th:each="server : ${bookList}">-->
             <div class="col d-flex align-items-stretch" th:each="server : ${serverList}" th:if="${server.getVisible()}">
-                <figure class="card card-product-grid" >
+                <figure class="card card-product-grid">
+                    <span class="span-my"></span>
+                    <span class="span-my"></span>
+                    <span class="span-my"></span>
+                    <span class="span-my"></span>
+
                     <figcaption class="info-wrap">
                         <div class="row">
                             <div class="col-md-9">
                                 <a href="#" class="title" data-abc="true" th:text="${server.getServerName()}">name</a>
-                                <a th:href="@{'/servers' + '?provider=' + ${server.getProvider()}}" class="rated"
-                                   th:text="${server.getProvider()}">name</a>
-                                <!--                                <div th:each="author : ${server.getAuthors()}">-->
-                                <!--                                    <span class="rated" th:text="${author}">author</span>-->
-                                <!--                                </div>-->
+                                <p class="rated" th:text="${'Provider: ' + server.getProvider().getName()}">name</p>
                             </div>
                         </div>
                     </figcaption>
@@ -200,18 +329,24 @@
                             <div class="row">
                                 <div class="col-md-9 col-xs-9">
                                     <a href="#" class="title" data-abc="true"
-                                       th:text="${'$' + server.getPrice()}">$0,0</a>
-                                    <span class="rated">per month</span>
+                                       th:text="${'CPU: '+ server.getCpuSeries() + ' ' + server.getCpuModel()}">CPU:
+                                        Unknown</a>
+                                    <a href="#" class="title" data-abc="true"
+                                       th:text="${'RAM: '+ server.getRam() + ' GB'}">RAM: Unknown</a>
                                 </div>
                             </div>
                         </figcaption>
                     </div>
                     <div class="bottom-wrap">
-                        <a href="#" class="btn btn-primary float-right" data-abc="true"
-                           th:disabled="${!server.getVisible()}">add to cart</a>
-                        <!--                        <div class="price-wrap">-->
-                        <!--                            <a href="#" class="btn btn-danger float-left" data-abc="true">add to my favourites</a>-->
-                        <!--                        </div>-->
+                        <p class="title" data-abc="true"
+                           th:text="${'$' + server.getPrice() + ' per month'}">$0,0</p>
+                        <div class="tcontainer">
+                            <a th:href="@{'/login'}"
+                               class="btn btn-primary custom"
+                               th:disabled="${!server.getVisible()}">
+                                <span>Choose</span>
+                            </a>
+                        </div>
                     </div>
                 </figure>
             </div>
