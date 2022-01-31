@@ -28,4 +28,4 @@ Web store which provides possibility to rent a dedicated server for users
 
 ### Default Users
 * Admin (email - admin@mail.com, password - rootroot)
-* Personal (email - personal@mail.com, password - rootroot)
+* Personal (email - test@mail.com, password - password)
